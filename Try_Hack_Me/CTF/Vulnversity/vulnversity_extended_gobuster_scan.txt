@@ -1,0 +1,6 @@
+/.hta                 (Status: 403) [Size: 302]
+/.htaccess            (Status: 403) [Size: 307]
+/.htpasswd            (Status: 403) [Size: 307]
+/css                  (Status: 301) [Size: 326] [--> http://10.10.127.40:3333/internal/css/]
+/index.php            (Status: 200) [Size: 525]
+/uploads              (Status: 301) [Size: 330] [--> http://10.10.127.40:3333/internal/uploads/]

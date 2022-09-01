@@ -1,0 +1,28 @@
+Lab\ 11:\ Blind\ SQL\ injection\ with\ conditional\ responses.txt
+
+
+
+Details: This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
+The results of the SQL query are not returned, and no error messages are displayed. But the application includes a "Welcome back" message in the page if the query returns any rows.
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To Do: To solve the lab, log in as the administrator user.
+
+Solution:
+	1. Use Burp Suite to intercept the request which contain TrackingId cookie.
+	2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional.
+	3. Now add "' AND '1'='1" after the TrackingID cookie. Now verify that "Welcome back!" message apears in the response.
+	4. Now add "' AND '1'='2" after the TrackingID cookie. Now verify that "Welcome back!" message doesn't apears in the response.
+	5. Now add "' AND (SELECT 'x' FROM users LIMIT 1)='x" after the TrackingID cookie. Now verify that "Welcome back!" message apears in the response. Now it is verified that trhere is a "users" table.
+	6. Now add "' AND (SELECT 'x' FROM users WHERE username='administrator' LIMIT 1)='x" after the TrackingID cookie. Now verify that "Welcome back!" message apears in the response. Now it is verified that trhere is a "username" col in "users" table and there is a user called 'administrator'.
+	7. Now add "' AND (SELECT 'x' FROM users WHERE username='administrator' AND LENGTH(password)>1 LIMIT 1)='x" after the TrackingID cookie. Now verify that "Welcome back!" message apears in the response. Now menually increase the password length condition value by one untill you doesn't receive a "welcome back!" message. And that's the length of the administrator's password. OR you can use intruder to dinamically change the value of the password length condition variable. Now, you know the length of the password.
+	8. Now add "' AND SUBSTRING((SELECT password FROM users WHERE username='administrator' LIMIT 1),1,1)='a" after the trackingID. Under the Position tab in intruder use sniper attack mode and make 'a' as veriable --> $a$ for the payload to change it's value. Now under payload tab select "BruteForce" as payload type. Configure the payload options as needed. 
+	9. To be able to tell when the correct character was submitted, you'll need to grep each response for the expression "Welcome back". To do this, go to the Options tab, and the "Grep - Match" section. Clear any existing entries in the list, and then add the value "Welcome back". 
+	10. Launch the attack by clicking the "Start attack" button or selecting "Start attack" from the Intruder menu. 
+	11. Review the attack results to find the value of the character at the first position. You should see a column in the results called "Welcome back". One of the rows should have a tick in this column. The payload showing for that row is the value of the character at the first position. 
+	12. Now, you simply need to re-run the attack for each of the other character positions in the password, to determine their value. To do this, go back to the main Burp window, and the Positions tab of Burp Intruder, and change the specified offset from 1 to 2. You should then see the following as the cookie value: "' AND SUBSTRING((SELECT password FROM users WHERE username='administrator' LIMIT 1),2,1)='a" .
+	13. Launch the modified attack, review the results, and note the character at the second offset. 
+	14. Continue this process testing offset 3, 4, and so on, until you have the whole password. 
+	15 In your browser, click "My account" to open the login page. Use the password to log in as the administrator user. 
+	
+	Note: We could create a single Intruder attack with two payload positions and the "Cluster bomb" attack type, and work through all permutations of offsets and character values. 

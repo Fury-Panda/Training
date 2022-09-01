@@ -1,0 +1,38 @@
+Server:		10.0.2.3
+Address:	10.0.2.3#53
+
+Non-authoritative answer:
+Name:	tryhackme.com
+Address: 104.26.11.229
+Name:	tryhackme.com
+Address: 172.67.69.208
+Name:	tryhackme.com
+Address: 104.26.10.229
+Name:	tryhackme.com
+Address: 2606:4700:20::681a:ae5
+Name:	tryhackme.com
+Address: 2606:4700:20::ac43:45d0
+Name:	tryhackme.com
+Address: 2606:4700:20::681a:be5
+
+Server:		10.0.2.3
+Address:	10.0.2.3#53
+
+Non-authoritative answer:
+tryhackme.com	mail exchanger = 5 alt2.aspmx.l.google.com.
+tryhackme.com	mail exchanger = 5 alt1.aspmx.l.google.com.
+tryhackme.com	mail exchanger = 1 aspmx.l.google.com.
+tryhackme.com	mail exchanger = 10 alt3.aspmx.l.google.com.
+tryhackme.com	mail exchanger = 10 alt4.aspmx.l.google.com.
+
+Authoritative answers can be found from:
+
+Server:		10.0.2.3
+Address:	10.0.2.3#53
+
+Non-authoritative answer:
+tryhackme.com	text = "v=spf1 include:_spf.google.com include:email.chargebee.com ~all"
+tryhackme.com	text = "google-site-verification=umR4x8HuzWMF5g3656JY1b-61NuryD0-GqGnYN13ONo"
+
+Authoritative answers can be found from:
+

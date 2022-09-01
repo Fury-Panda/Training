@@ -1,0 +1,67 @@
+
+; <<>> DiG 9.16.15-Debian <<>> tryhackme.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 48534
+;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;tryhackme.com.			IN	A
+
+;; ANSWER SECTION:
+tryhackme.com.		254	IN	A	104.26.11.229
+tryhackme.com.		254	IN	A	104.26.10.229
+tryhackme.com.		254	IN	A	172.67.69.208
+
+;; Query time: 0 msec
+;; SERVER: 10.0.2.3#53(10.0.2.3)
+;; WHEN: Sun Oct 31 14:40:30 EDT 2021
+;; MSG SIZE  rcvd: 90
+
+
+; <<>> DiG 9.16.15-Debian <<>> tryhackme.com MX
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 27559
+;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;tryhackme.com.			IN	MX
+
+;; ANSWER SECTION:
+tryhackme.com.		83	IN	MX	5 alt2.aspmx.l.google.com.
+tryhackme.com.		83	IN	MX	5 alt1.aspmx.l.google.com.
+tryhackme.com.		83	IN	MX	1 aspmx.l.google.com.
+tryhackme.com.		83	IN	MX	10 alt3.aspmx.l.google.com.
+tryhackme.com.		83	IN	MX	10 alt4.aspmx.l.google.com.
+
+;; Query time: 0 msec
+;; SERVER: 10.0.2.3#53(10.0.2.3)
+;; WHEN: Sun Oct 31 14:41:04 EDT 2021
+;; MSG SIZE  rcvd: 157
+
+
+; <<>> DiG 9.16.15-Debian <<>> tryhackme.com TXT
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9118
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;tryhackme.com.			IN	TXT
+
+;; ANSWER SECTION:
+tryhackme.com.		103	IN	TXT	"v=spf1 include:_spf.google.com include:email.chargebee.com ~all"
+tryhackme.com.		103	IN	TXT	"google-site-verification=umR4x8HuzWMF5g3656JY1b-61NuryD0-GqGnYN13ONo"
+
+;; Query time: 0 msec
+;; SERVER: 10.0.2.3#53(10.0.2.3)
+;; WHEN: Sun Oct 31 14:41:51 EDT 2021
+;; MSG SIZE  rcvd: 199
+

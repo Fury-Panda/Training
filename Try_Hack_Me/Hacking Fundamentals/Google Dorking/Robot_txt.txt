@@ -1,0 +1,73 @@
+Robots.txt
+
+Similar to "Sitemaps" which we will later discuss, this file is the first thing indexed by "Crawlers" when visiting a website.
+
+
+But what is it?
+
+This file must be served at the root directory - specified by the webserver itself. Looking at this files extension of .txt, its fairly safe to assume that it is a text file.
+
+The text file defines the permissions the "Crawler" has to the website. For example, what type of "Crawler" is allowed (I.e. You only want Google's "Crawler" to index your site and not MSN's). Moreover, Robots.txt can specify what files and directories that we do or don't want to be indexed by the "Crawler".
+
+A very basic markup of a Robots.txt is like the following:
+
+
+
+Here we have a few keywords...
+Keyword	Function
+User-agent	Specify the type of "Crawler" that can index your site (the asterisk being a wildcard, allowing all "User-agents"
+Allow	Specify the directories or file(s) that the "Crawler" can index
+Disallow	Specify the directories or file(s) that the "Crawler" cannot index
+Sitemap	Provide a reference to where the sitemap is located (improves SEO as previously discussed, we'll come to sitemaps in the next task)
+
+
+In this case:
+
+1. Any "Crawler" can index the site
+
+2. The "Crawler" is allowed to index the entire contents of the site
+
+3. The "Sitemap" is located at http://mywebsite.com/sitemap.xml
+
+
+Say we wanted to hide directories or files from a "Crawler"? Robots.txt works on a "blacklisting" basis. Essentially, unless told otherwise, the Crawler will index whatever it can find.
+
+In this case:
+
+1. Any "Crawler" can index the site
+
+2. The "Crawler" can index every other content that isn't contained within "/super-secret-directory/".
+
+Crawlers also know the differences between sub-directories, directories and files. Such as in the case of the second "Disallow:" ("/not-a-secret/but-this-is/")
+
+The "Crawler" will index all the contents within "/not-a-secret/", but will not index anything contained within the sub-directory "/but-this-is/".
+
+3. The "Sitemap" is located at http://mywebsite.com/sitemap.xml
+
+
+What if we Only Wanted Certain "Crawlers" to Index our Site?
+
+We can stipulate so, such as in the picture below:
+
+In this case:
+
+1. The "Crawler" "Googlebot" is allowed to index the entire site ("Allow: /")
+
+2. The "Crawler" "msnbot" is not allowed to index the site (Disallow: /")
+
+
+How about Preventing Files From Being Indexed? 
+
+Whilst you can make manual entries for every file extension that you don't want to be indexed, you will have to provide the directory it is within, as well as the full filename. Imagine if you had a huge site! What a pain...Here's where we can use a bit of regexing.
+
+In this case:
+
+1. Any "Crawler" can index the site
+
+2. However, the "Crawler" cannot index any file that has the extension of .ini within any directory/sub-directory using ("$") of the site.
+
+3. The "Sitemap" is located at http://mywebsite.com/sitemap.xml
+
+Why would you want to hide a .ini file for example? Well, files like this contain sensitive configuration details. Can you think of any other file formats that might contain sensitive information?
+
+

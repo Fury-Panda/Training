@@ -1,0 +1,239 @@
+Test Case on Hospital Management System(HMS)
+
+Test Case ID
+Test Scenario
+Test Steps
+Test Data
+Expected Result
+Actual Result
+Pass/Fail
+01
+Verify that the portal for new patient registration has all the mandatory fields required for registering a patient.
+    1. Go to the hospital website “www.demohosp tal.com”.
+    2. Click on the “Patient Registration” button.
+N/A
+Should have all the necessary input fields to register a patient.
+As expected
+Pass
+02
+Verify that after filling the patient details and successful payment a Patient-Card is printed.
+    1. Click on “Patients”.
+    2. Fill the required fields.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+    5. Accept the payment.
+    6. Click on the “Patient Card”.
+    7. Click “Print”.
+    1. Patients Information
+        1) John Bilk
+        2) pa235418
+    2. Pay the Bill.
+
+Should print the “Patient card” correctly.
+As expected
+Pass
+03
+Verify that card has information like patient details, doctor assigned, department, the application number, DOJ, bed allocated(if applicable) etc.
+    1. Click on “Patient Card”.
+N/A
+Should have all these information.
+As expected
+Pass
+04
+Verify that after patient checkup, based on the requirement the details are updated in the patient details database.
+    1. Click on “Patients”.
+    2. Fill the required fields.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+    5. Update the data as required.
+    6. Click on “Update”.
+
+    1. Patients Information
+        1) John Bilk
+        2) pa235418
+    2. Weight: 82
+    3. BP: 90/130
+Should update required information based on checkup.
+As expected
+Pass
+05
+Verify that for existing patients based on the application number of the patient, their records are added/updated in the database.
+    1. Click on “Patients”. 
+    2. Fill the required fields.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+
+    1. Patients Information
+        1) pa235418
+
+
+Should show the updated or new added information.
+As expected
+Pass
+06
+Verify that the system has an admin for doctors as well.
+    1. Click on “Admin”.
+    2. Manually check for “Doctor Admin”.
+N/A
+Should have an admin for
+doctor
+module.
+As expected
+Pass
+07
+Verify that for each doctor’s details like their timings, specialty, fee, patient visited etc is visible to the authorized users.
+    1. Click on the “Department”.
+    2. Select a specific department.
+    3. Then select a doctor.
+N/A
+Should display the details of the doctor.
+As expected
+Pass
+08
+Verify that new details of new doctors can be added to the system.
+    1. Form admin panel click on “Add Doctor”.
+    2. Fill the required details.
+    3. Click on “Submit”.
+
+    1. Doctor information
+    2. Name: Alex Bruno
+    3. Gender: Male
+    4. Age: 46
+Should have all the necessary input fields to add a new doctor to the system.
+As expected
+Pass
+09
+Verify that the details of existing users can be updated in the system.
+    1. Click on the “Account
+    2. Settings”.
+    3. Click on “Edit”.
+    4. Update required information.
+    5. Click on the “Done”.
+    1. User Name: Alexandrio Farnandez
+    2. Email: demo@demo.com
+Should update the information.
+As expected
+Pass
+10
+Verify that the doctor’s record can be deleted from the system.
+    1. From admin panel click on “Search Doctor”.
+    2. Fill ID or Name.
+    3. Select a doctor from the list.
+    4. Click on “Manage”
+    5. Click on “Delete”
+    6. Click on “Confirm” from pop up window.
+    1. Name: Farnandez
+    2. ID: do-3297
+Should remove a doctor the system.
+As expected
+Pass
+11
+Verify the billing admin of the system calculates the bill based on the patient’s unique application number from the data generated from different systems.
+    1. Click on “Patients”.
+    2. Fill the “ID” field.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+    5. Click on “Generate Bill”.
+    1. ID: pa-235782
+System should calculate the bill of a patient based on the data generated form different system.
+As expected
+Pass
+12
+Verify that the hard copy of the bill can be generating by printing the bill.
+    1. Click on “Patients”.
+    2. Fill the “ID” field.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+    5. Select the “Bill” option.
+    6. Click on “Generate Total Bill”.
+    7. Click on “Print”.
+    1. ID: pa-235782
+Should print a hard-copy of the bill.
+As expected
+Pass
+13
+Verify that authorized users can also see total day-wise billing done.
+    1. Click on “Patients”.
+    2. Fill the “ID” field.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+    5. Select the “Bill” option.
+    6. Select a date from “Date” calendar. 
+    7. Click on “Generate Bill”.
+    1. ID: pa-235782
+    2. Date: 22/2/2021
+System should calculate the bill of a patient based on a specific date.
+As expected
+Pass
+14
+Verify the admin for hospital inventory, room and bed management.
+    1. Click on “Admin”.
+    2. Manually check for “Admin” who can manage inventory, room, and bed.
+
+Should have an admin for
+inventory, room and bed
+module.
+As expected
+Pass
+15
+Verify that the admin has the record of all the equipment, machines and medicines and the same gets updated when used or added to the system.
+    1. Select “Hospital Record”.
+    2. Select “Equipment”.
+        I. Click on “Edit Existing”.
+            (a) Select a category.
+            (b) Click on “Edit”.
+            (c) Edit the information.
+            (d) Click on “Update”.
+        II. Click on “Add New”.
+            (a) Fill the required fields.
+            (b) Click on “Add”.
+    3. Select “Machines”.
+        I. Click on “Edit Existing”.
+            (a) Select a category.
+            (b) Click on “Edit”.
+            (c) Edit the information.
+            (d) Click on “Update”.
+        II. Click on “Add New”.
+            (a) Fill the required fields.
+            (b) Click on “Add”.
+    4. Select “Medicines”.
+        I. Click on “ Edit Existing”.
+            (a) Select a medicine.
+            (b) Click on “Edit”.
+            (c) Edit the information.
+            (d) Click on “Update”.
+        II. Click on “Add New”.
+            (a) Fill the required fields.
+            (b) Click on “Add”.
+    1. Equipment:
+        1. Quantity: 34
+        2. Name: Oxygen Cylinder
+        3. Quantity: 120
+    2. Machines:
+        1. Quantity: 2
+        2. Name: X-Ray Machine
+        3. Quantity: 3
+    3. Medicine:
+        1. Quantity: 1200
+        2. Finix-20
+        3. quantity: 2500
+Should have an admin who has the access to update or add new information on Equipment, Machine and Medicine management.
+As expected
+Pass
+16
+Verify that the admin has a record of rooms and beds availability and the same gets updated based on their allotment and departure to patients.
+    1. Click on “Patients”.
+    2. Fill the “ID” field.
+    3. Click on the “Query” button.
+    4. Select the Patient.
+        I. Click on “Available Room/Bed”.
+            (a) Select a room or bed.
+            (b) Click on “Allocate”.
+            (c) Click on “Confirm” on the popup window.
+        II. Click on “Departure”.
+            (a) Click on “Confirm” on the popup window.
+    1. ID: pa-235782
+Admin should be able to allocate or deallocate a room or bed based on admit or departure of a patient.
+As expected
+Pass
+

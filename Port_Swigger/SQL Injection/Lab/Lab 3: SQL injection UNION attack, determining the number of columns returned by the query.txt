@@ -1,0 +1,15 @@
+Lab 3: SQL injection UNION attack, determining the number of columns returned by the query
+
+Details: This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. The first step of such an attack is to determine the number of columns that are being returned by the query. You will then use this technique in subsequent labs to construct the full attack. 
+
+To Do: This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. The first step of such an attack is to determine the number of columns that are being returned by the query. You will then use this technique in subsequent labs to construct the full attack. 
+
+
+Sloution: 
+	1. Use Burp Suite to intercept the request.
+	2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional. 
+	3. Modify the 'category' parameter to " ' UNION SELECT NULL--".
+	4. Add "NULL" to the query untill an valid 200 status request. 
+		i.e. " ' UNION SELECT NULL, NULL--"
+			" ' UNION SELECT NULL, NULL, NULL--"
+	5. When you will get a 200 status the number of "NULL" is the number of columns returned by the orginal query.

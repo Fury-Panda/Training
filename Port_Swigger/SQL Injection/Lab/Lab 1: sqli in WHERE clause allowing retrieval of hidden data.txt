@@ -1,0 +1,14 @@
+Lab 1: sqli in WHERE clause allowing retrieval of hidden data
+
+Details:  This lab contains an SQL injection vulnerability in the product category filter. When the user selects a category, the application carries out an SQL query like the following:
+
+SELECT * FROM products WHERE category = 'Gifts' AND released = 1 
+
+To-Do: To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased. 
+
+Solution:
+	
+	Modify the category parameter, giving it the value '+OR+1=1-- [in the url or in burp suite]
+	Submit the request, and verify that the response now contains additional items. 
+	Query: SELECT * FROM products WHERE category = 'Gifts'+OR+1=1--' AND released = 1 
+	Explanation: Here in query 1=1 gives true for all and "--" comment out rest of the portion [' AND released = 1 ].

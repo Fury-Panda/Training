@@ -1,0 +1,69 @@
+# Nmap 7.92 scan initiated Tue Jan 11 20:21:34 2022 as: nmap -A -v -sV -oN nmap_scan.txt 10.10.214.124
+Increasing send delay for 10.10.214.124 from 0 to 5 due to 13 out of 43 dropped probes since last increase.
+Nmap scan report for 10.10.214.124
+Host is up (0.20s latency).
+Not shown: 989 closed tcp ports (conn-refused)
+PORT      STATE SERVICE            VERSION
+80/tcp    open  http               Microsoft IIS httpd 8.5
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Microsoft-IIS/8.5
+| http-methods: 
+|   Supported Methods: OPTIONS TRACE GET HEAD POST
+|_  Potentially risky methods: TRACE
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+3389/tcp  open  ssl/ms-wbt-server?
+|_ssl-date: 2022-01-11T14:24:26+00:00; -10h59m05s from scanner time.
+| ssl-cert: Subject: commonName=steelmountain
+| Issuer: commonName=steelmountain
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2022-01-10T14:04:35
+| Not valid after:  2022-07-12T14:04:35
+| MD5:   b68d 8daa 30d1 7864 0e40 360d ed7c 562e
+|_SHA-1: 3e4c b2a1 7ed4 9219 e112 4a05 e832 96e2 e3b8 8069
+| rdp-ntlm-info: 
+|   Target_Name: STEELMOUNTAIN
+|   NetBIOS_Domain_Name: STEELMOUNTAIN
+|   NetBIOS_Computer_Name: STEELMOUNTAIN
+|   DNS_Domain_Name: steelmountain
+|   DNS_Computer_Name: steelmountain
+|   Product_Version: 6.3.9600
+|_  System_Time: 2022-01-11T14:24:20+00:00
+8080/tcp  open  http               HttpFileServer httpd 2.3
+|_http-title: HFS /
+|_http-favicon: Unknown favicon MD5: 759792EDD4EF8E6BC2D1877D27153CB1
+|_http-server-header: HFS 2.3
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49155/tcp open  msrpc              Microsoft Windows RPC
+49156/tcp open  msrpc              Microsoft Windows RPC
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time: 
+|   date: 2022-01-11T14:24:19
+|_  start_date: 2022-01-11T14:04:26
+|_clock-skew: mean: -10h59m05s, deviation: 0s, median: -10h59m06s
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   3.0.2: 
+|_    Message signing enabled but not required
+| nbstat: NetBIOS name: STEELMOUNTAIN, NetBIOS user: <unknown>, NetBIOS MAC: 02:32:10:aa:33:55 (unknown)
+| Names:
+|   STEELMOUNTAIN<00>    Flags: <unique><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|_  STEELMOUNTAIN<20>    Flags: <unique><active>
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Jan 11 20:23:31 2022 -- 1 IP address (1 host up) scanned in 117.76 seconds

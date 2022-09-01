@@ -1,0 +1,4 @@
+/.hta                 (Status: 403) [Size: 277]
+/content              (Status: 301) [Size: 314] [--> http://10.10.124.91/content/]
+/index.html           (Status: 200) [Size: 11321]
+/server-status        (Status: 403) [Size: 277]

@@ -1,0 +1,15 @@
+What process does a Hacker follow?
+
+While you might think that a hacker does whatever he/she wants, it is actually true that professional hackers/penetration tester generally follow an established process to understand and exploit their targets. This ensures that there is consistency between how assessments are performed throughout the industry, and is the methodology that drives assessments.
+
+
+The Process that pentesters follow is summarized in the following steps:
+
+    Reconnaissance
+    Enumeration/Scanning
+    Gaining Access
+    Privilege Escalation
+    Covering Tracks
+    Reporting
+
+In the next sections we will go through each aspect of this process in more detail.

@@ -1,0 +1,13 @@
+Lab 13: Blind SQL injection with time delays
+
+Details:  This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
+The results of the SQL query are not returned, and the application does not respond any differently based on whether the query returns any rows or causes an error. However, since the query is executed synchronously, it is possible to trigger conditional time delays to infer information.
+
+To Do: To solve the lab, exploit the SQL injection vulnerability to cause a 10 second delay.
+
+Solution:
+		1. Use Burp Suite to intercept the request which contain TrackingId cookie.
+    	2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional.
+    	3. Now add "'%3bSELECT+pg_sleep(10)--" after the TrackingID. 
+
+    	Note "%3b" is the url encoded of ";". It is a good practice to use url encode as you type using sqli.

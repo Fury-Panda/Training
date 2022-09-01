@@ -1,0 +1,20 @@
+Lab 9: SQL injection attack, listing the database contents on Oracle
+
+Details:  This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+The application has a login function, and the database contains a table that holds usernames and passwords. You need to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users
+
+To Do: To solve the lab, log in as the administrator user.
+
+Solution: 
+        1. Use Burp Suite to intercept the request.
+        2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional. 
+        3. Modify the 'category' parameter to " ' UNION SELECT NULL--".
+        4. Add "NULL" to the query untill an valid 200 status request. 
+                i.e. " ' UNION SELECT NULL, NULL--"
+                        " ' UNION SELECT NULL, NULL, NULL--"
+        5. When you will get a 200 status the number of "NULL" is the number of columns returned by the orginal query.
+        6. Now put a specific STRING in the place of single a "NULL" and alternate the position untill got an valid 200 status request and determine which columns contain string.
+        7. After determining which columns return string, use this injection "'+UNION+SELECT+NULL,table_name+FROM+all_tables--" to list all the tables from the database. As there are 2 columns in the orginal qurey and I used "table_name"column and NULL.
+        8. List out some possible users table. Now use the injection "'+UNION+SELECT+column_name,+NULL+FROM+all_tab_columns+WHERE+table_name='possible_users_table'--" to find some potential user_name and password column.
+        9. Now use the injection "'+UNION+SELECT+username,password+FROM+users_table--" to list out the potential usernames and passwords data.
+        10. Now login as administrator using administrator credentials.

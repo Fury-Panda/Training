@@ -1,0 +1,151 @@
+# FFUF Report
+
+  Command line : `ffuf -u http://10.10.76.233/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words-lowercase.txt -o page_discovery_ffuf_scan.md -of md -e .php,.txt -v`
+  Time: 2021-11-19T01:53:11-05:00
+
+  | FUZZ | URL | Redirectlocation | Position | Status Code | Content Length | Content Words | Content Lines | Content Type | ResultFile |
+  | :- | :-- | :--------------- | :---- | :------- | :---------- | :------------- | :------------ | :--------- | :----------- |
+  | .html.txt | http://10.10.76.233/.html.txt |  | 21 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html | http://10.10.76.233/.html |  | 19 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .php | http://10.10.76.233/.php |  | 1 | 403 | 283 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.php | http://10.10.76.233/.html.php |  | 20 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | login.php | http://10.10.76.233/login.php |  | 26 | 200 | 1523 | 89 | 77 | text/html;charset=utf-8 |  |
+  | index.php | http://10.10.76.233/index.php | login.php | 47 | 302 | 0 | 1 | 1 | text/html |  |
+  | .htm | http://10.10.76.233/.htm |  | 112 | 403 | 283 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.php | http://10.10.76.233/.htm.php |  | 113 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.txt | http://10.10.76.233/.htm.txt |  | 114 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | logout.php | http://10.10.76.233/logout.php | login.php | 158 | 302 | 0 | 1 | 1 | text/html |  |
+  | config | http://10.10.76.233/config | http://10.10.76.233/config/ | 277 | 301 | 312 | 20 | 10 | text/html; charset=iso-8859-1 |  |
+  | docs | http://10.10.76.233/docs | http://10.10.76.233/docs/ | 367 | 301 | 310 | 20 | 10 | text/html; charset=iso-8859-1 |  |
+  | about.php | http://10.10.76.233/about.php |  | 503 | 200 | 4840 | 331 | 109 | text/html;charset=utf-8 |  |
+  | . | http://10.10.76.233/. | login.php | 1171 | 302 | 0 | 1 | 1 | text/html |  |
+  | external | http://10.10.76.233/external | http://10.10.76.233/external/ | 1477 | 301 | 314 | 20 | 10 | text/html; charset=iso-8859-1 |  |
+  | .htaccess.php | http://10.10.76.233/.htaccess.php |  | 1718 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htaccess | http://10.10.76.233/.htaccess |  | 1717 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htaccess.txt | http://10.10.76.233/.htaccess.txt |  | 1719 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | setup.php | http://10.10.76.233/setup.php |  | 1892 | 200 | 4066 | 308 | 123 | text/html;charset=utf-8 |  |
+  | robots.txt | http://10.10.76.233/robots.txt |  | 1911 | 200 | 26 | 3 | 2 | text/plain |  |
+  | security.php | http://10.10.76.233/security.php | login.php | 2573 | 302 | 0 | 1 | 1 | text/html |  |
+  | phpinfo.php | http://10.10.76.233/phpinfo.php | login.php | 2711 | 302 | 0 | 1 | 1 | text/html |  |
+  | .php3 | http://10.10.76.233/.php3 |  | 2824 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .phtml | http://10.10.76.233/.phtml |  | 3109 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htc.php | http://10.10.76.233/.htc.php |  | 5864 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htc | http://10.10.76.233/.htc |  | 5863 | 403 | 283 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htc.txt | http://10.10.76.233/.htc.txt |  | 5865 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | instructions.php | http://10.10.76.233/instructions.php |  | 6686 | 200 | 14014 | 1484 | 263 | text/html;charset=utf-8 |  |
+  | .php5 | http://10.10.76.233/.php5 |  | 8161 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_var_de | http://10.10.76.233/.html_var_de |  | 9436 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_var_de.php | http://10.10.76.233/.html_var_de.php |  | 9437 | 403 | 295 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_var_de.txt | http://10.10.76.233/.html_var_de.txt |  | 9438 | 403 | 295 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .php4 | http://10.10.76.233/.php4 |  | 9907 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | server-status | http://10.10.76.233/server-status |  | 12571 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htpasswd | http://10.10.76.233/.htpasswd |  | 15487 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htpasswd.php | http://10.10.76.233/.htpasswd.php |  | 15488 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htpasswd.txt | http://10.10.76.233/.htpasswd.txt |  | 15489 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html..php | http://10.10.76.233/.html..php |  | 17489 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html. | http://10.10.76.233/.html. |  | 17488 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html..txt | http://10.10.76.233/.html..txt |  | 17490 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.html.php | http://10.10.76.233/.html.html.php |  | 19559 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.html | http://10.10.76.233/.html.html |  | 19558 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.html.txt | http://10.10.76.233/.html.html.txt |  | 19560 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htpasswds | http://10.10.76.233/.htpasswds |  | 22324 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htpasswds.php | http://10.10.76.233/.htpasswds.php |  | 22325 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htpasswds.txt | http://10.10.76.233/.htpasswds.txt |  | 22326 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm..php | http://10.10.76.233/.htm..php |  | 29237 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm. | http://10.10.76.233/.htm. |  | 29236 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm..txt | http://10.10.76.233/.htm..txt |  | 29238 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmll | http://10.10.76.233/.htmll |  | 31054 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmll.php | http://10.10.76.233/.htmll.php |  | 31055 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmll.txt | http://10.10.76.233/.htmll.txt |  | 31056 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .phps | http://10.10.76.233/.phps |  | 31072 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.old.php | http://10.10.76.233/.html.old.php |  | 33194 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.old.txt | http://10.10.76.233/.html.old.txt |  | 33195 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.old | http://10.10.76.233/.html.old |  | 33193 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.bak.php | http://10.10.76.233/.html.bak.php |  | 36056 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.bak | http://10.10.76.233/.html.bak |  | 36055 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .ht.php | http://10.10.76.233/.ht.php |  | 36053 | 403 | 286 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .ht | http://10.10.76.233/.ht |  | 36052 | 403 | 282 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .ht.txt | http://10.10.76.233/.ht.txt |  | 36054 | 403 | 286 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.bak.txt | http://10.10.76.233/.html.bak.txt |  | 36057 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.htm.txt | http://10.10.76.233/.htm.htm.txt |  | 39093 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.htm.php | http://10.10.76.233/.htm.htm.php |  | 39092 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.htm | http://10.10.76.233/.htm.htm |  | 39091 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .hta | http://10.10.76.233/.hta |  | 47245 | 403 | 283 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .hta.php | http://10.10.76.233/.hta.php |  | 47246 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .hta.txt | http://10.10.76.233/.hta.txt |  | 47247 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htgroup | http://10.10.76.233/.htgroup |  | 47248 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htgroup.php | http://10.10.76.233/.htgroup.php |  | 47249 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htgroup.txt | http://10.10.76.233/.htgroup.txt |  | 47250 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html1 | http://10.10.76.233/.html1 |  | 47251 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html1.txt | http://10.10.76.233/.html1.txt |  | 47253 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html1.php | http://10.10.76.233/.html1.php |  | 47252 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.lck | http://10.10.76.233/.html.lck |  | 53170 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.lck.php | http://10.10.76.233/.html.lck.php |  | 53171 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.lck.txt | http://10.10.76.233/.html.lck.txt |  | 53172 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.printable.php | http://10.10.76.233/.html.printable.php |  | 53174 | 403 | 298 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.printable | http://10.10.76.233/.html.printable |  | 53173 | 403 | 294 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.printable.txt | http://10.10.76.233/.html.printable.txt |  | 53175 | 403 | 298 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.lck | http://10.10.76.233/.htm.lck |  | 60928 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.lck.php | http://10.10.76.233/.htm.lck.php |  | 60929 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.lck.txt | http://10.10.76.233/.htm.lck.txt |  | 60930 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htaccess.bak.txt | http://10.10.76.233/.htaccess.bak.txt |  | 72309 | 403 | 296 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htaccess.bak.php | http://10.10.76.233/.htaccess.bak.php |  | 72308 | 403 | 296 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htaccess.bak | http://10.10.76.233/.htaccess.bak |  | 72307 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.php | http://10.10.76.233/.html.php |  | 72310 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.php.php | http://10.10.76.233/.html.php.php |  | 72311 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.php.txt | http://10.10.76.233/.html.php.txt |  | 72312 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmls | http://10.10.76.233/.htmls |  | 72313 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmls.php | http://10.10.76.233/.htmls.php |  | 72314 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htx | http://10.10.76.233/.htx |  | 72316 | 403 | 283 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmls.txt | http://10.10.76.233/.htmls.txt |  | 72315 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htx.php | http://10.10.76.233/.htx.php |  | 72317 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htx.txt | http://10.10.76.233/.htx.txt |  | 72318 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htuser.php | http://10.10.76.233/.htuser.php |  | 88751 | 403 | 290 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htlm.php | http://10.10.76.233/.htlm.php |  | 88742 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htuser | http://10.10.76.233/.htuser |  | 88750 | 403 | 286 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm2 | http://10.10.76.233/.htm2 |  | 88744 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm2.php | http://10.10.76.233/.htm2.php |  | 88745 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html-.txt | http://10.10.76.233/.html-.txt |  | 88749 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html-.php | http://10.10.76.233/.html-.php |  | 88748 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html- | http://10.10.76.233/.html- |  | 88747 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htuser.txt | http://10.10.76.233/.htuser.txt |  | 88752 | 403 | 290 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htlm | http://10.10.76.233/.htlm |  | 88741 | 403 | 284 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htlm.txt | http://10.10.76.233/.htlm.txt |  | 88743 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm2.txt | http://10.10.76.233/.htm2.txt |  | 88746 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htacess | http://10.10.76.233/.htacess |  | 115438 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htacess.php | http://10.10.76.233/.htacess.php |  | 115439 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htacess.txt | http://10.10.76.233/.htacess.txt |  | 115440 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.d | http://10.10.76.233/.htm.d |  | 115441 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.d.php | http://10.10.76.233/.htm.d.php |  | 115442 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.d.txt | http://10.10.76.233/.htm.d.txt |  | 115443 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.html | http://10.10.76.233/.htm.html |  | 115444 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.html.php | http://10.10.76.233/.htm.html.php |  | 115445 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.old | http://10.10.76.233/.htm.old |  | 115447 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.html.txt | http://10.10.76.233/.htm.html.txt |  | 115446 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.old.php | http://10.10.76.233/.htm.old.php |  | 115448 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htm.old.txt | http://10.10.76.233/.htm.old.txt |  | 115449 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html-1 | http://10.10.76.233/.html-1 |  | 115450 | 403 | 286 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html-1.php | http://10.10.76.233/.html-1.php |  | 115451 | 403 | 290 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.orig.php | http://10.10.76.233/.html.orig.php |  | 115454 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html-1.txt | http://10.10.76.233/.html-1.txt |  | 115452 | 403 | 290 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.orig | http://10.10.76.233/.html.orig |  | 115453 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.orig.txt | http://10.10.76.233/.html.orig.txt |  | 115455 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.sav.php | http://10.10.76.233/.html.sav.php |  | 115457 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.sav | http://10.10.76.233/.html.sav |  | 115456 | 403 | 288 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html.sav.txt | http://10.10.76.233/.html.sav.txt |  | 115458 | 403 | 292 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_ | http://10.10.76.233/.html_ |  | 115459 | 403 | 285 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_.php | http://10.10.76.233/.html_.php |  | 115460 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_.txt | http://10.10.76.233/.html_.txt |  | 115461 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_files.php | http://10.10.76.233/.html_files.php |  | 115463 | 403 | 294 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_files | http://10.10.76.233/.html_files |  | 115462 | 403 | 290 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .html_files.txt | http://10.10.76.233/.html_files.txt |  | 115464 | 403 | 294 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmlpar | http://10.10.76.233/.htmlpar |  | 115465 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmlpar.txt | http://10.10.76.233/.htmlpar.txt |  | 115467 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmlpar.php | http://10.10.76.233/.htmlpar.php |  | 115466 | 403 | 291 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmlprint | http://10.10.76.233/.htmlprint |  | 115468 | 403 | 289 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmlprint.php | http://10.10.76.233/.htmlprint.php |  | 115469 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .htmlprint.txt | http://10.10.76.233/.htmlprint.txt |  | 115470 | 403 | 293 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .hts | http://10.10.76.233/.hts |  | 115471 | 403 | 283 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .hts.php | http://10.10.76.233/.hts.php |  | 115472 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  | .hts.txt | http://10.10.76.233/.hts.txt |  | 115473 | 403 | 287 | 21 | 11 | text/html; charset=iso-8859-1 |  |
+  

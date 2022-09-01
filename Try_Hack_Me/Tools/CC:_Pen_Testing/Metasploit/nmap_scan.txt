@@ -1,0 +1,4 @@
+# Nmap 7.92 scan initiated Fri Jun 17 10:41:45 2022 as: nmap -A -v -sV -oN nmap_scan.txt 10.10.53.83
+Nmap scan report for 10.10.53.83 [host down]
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Fri Jun 17 10:41:49 2022 -- 1 IP address (0 hosts up) scanned in 3.30 seconds

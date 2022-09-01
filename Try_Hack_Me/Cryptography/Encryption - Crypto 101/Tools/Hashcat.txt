@@ -1,0 +1,6 @@
+hashcat is another one of the most popular hash cracking tools. It is renowned for its versatility and speed. Hashcat does not have auto detection for hashtypes, instead it has modes. For example if you were trying to crack an md5 hash the "mode" would be 0, while if you were trying to crack a sha1 hash, the mode would be 100.
+
+Fore more details: 
+Run in your terminal
+
+hashcat --help

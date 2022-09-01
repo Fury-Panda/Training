@@ -1,0 +1,5 @@
+/js                   (Status: 301) [Size: 171] [--> /js/]
+/css                  (Status: 301) [Size: 173] [--> /css/]
+/images               (Status: 301) [Size: 179] [--> /images/]
+/fonts                (Status: 301) [Size: 177] [--> /fonts/]
+/.                    (Status: 301) [Size: 169] [--> /./]

@@ -1,0 +1,18 @@
+Lab 10: SQL injection UNION attack, retrieving multiple values in a single column
+
+Details: his lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+The database contains a different table called users, with columns called username and password. 
+
+To Do: To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.  
+
+Solution: 
+        1. Use Burp Suite to intercept the request.
+        2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional. 
+        3. Modify the 'category' parameter to " ' UNION SELECT NULL--".
+        4. Add "NULL" to the query untill an valid 200 status request. 
+                i.e. " ' UNION SELECT NULL, NULL--"
+                        " ' UNION SELECT NULL, NULL, NULL--"
+        5. When you will get a 200 status the number of "NULL" is the number of columns returned by the orginal query.
+        6. Now put a specific STRING in the place of single a "NULL" and alternate the position untill got an valid 200 status request and determine which columns contain string.
+        7. There is one column in the query which return string. As we were given the table name 'users' and column names 'username' and 'password', we have to concatanate this two columns string into one. Now use the injection "'+UNION+SELECT+NULL,username+||+'~'+||+password+FROM+users--" to list out the potential usernames and passwords data.
+        8. Now login as administrator using administrator credentials.

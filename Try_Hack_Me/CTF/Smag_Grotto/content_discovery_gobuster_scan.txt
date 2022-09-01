@@ -1,0 +1,6 @@
+/.htpasswd            (Status: 403) [Size: 276]
+/.htaccess            (Status: 403) [Size: 276]
+/.hta                 (Status: 403) [Size: 276]
+/index.php            (Status: 200) [Size: 402]
+/mail                 (Status: 301) [Size: 309] [--> http://10.10.40.11/mail/]
+/server-status        (Status: 403) [Size: 276]

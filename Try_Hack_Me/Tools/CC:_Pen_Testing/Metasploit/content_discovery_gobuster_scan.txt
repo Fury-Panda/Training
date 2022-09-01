@@ -1,0 +1,5 @@
+/Documents and Settings (Status: 501) [Size: 310]
+/icons                (Status: 301) [Size: 314] [--> http://10.10.95.102/icons/]
+/index.html           (Status: 200) [Size: 564]
+/Program Files        (Status: 501) [Size: 310]
+/reports list         (Status: 501) [Size: 310]

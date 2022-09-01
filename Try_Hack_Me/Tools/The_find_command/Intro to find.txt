@@ -1,0 +1,43 @@
+
+
+When you know exactly what you’re looking for, you don’t need to search for it; you just have to find it.
+
+
+This tutorial will help you understand how to use the find command effectively in a CTF context. It is written in a way that you won’t have to refer to the man page to complete it, although I recommend the man page for further reading.
+
+
+The syntax of the command can be broken down as such:
+
+find where what
+
+
+Firstly you tell the system to find something; secondly you tell it where to look; and finally, you tell it what to look for.
+
+You don’t need to specify when you’re looking in your working directory. Also, you can use wildcards as well, in specifying both a directory and a name.
+
+
+Note: There's no VM to deploy in this room. You only need to enter the commands that would be used to find what the questions ask for. You can also test the commands on your own terminal (if you have access to a Unix or Unix-like system) to check the output of find with different options. However, that's not necessary; this is a walkthrough, and everything you need to solve this room is in the tasks' description.
+
+
+On your terminal, execute the command:
+
+touch file-1 file-2
+
+This command will create two files, named file-1 and file-2 respectively, in your current working directory.
+
+
+Now, execute:
+
+find file*
+
+As you can see, the command outputs both of your files.
+
+
+This time, execute:
+
+find *1
+
+Only file-1 is in the output.
+
+
+These commands are useful when you want to specify only part of the name of what you’re looking for.

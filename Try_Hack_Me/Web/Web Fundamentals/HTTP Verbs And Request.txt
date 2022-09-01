@@ -1,0 +1,58 @@
+Requests
+
+There are 9 different HTTP "verbs", also known as methods. Each one has a different function. We've mentioned GET requests already, these are used to retrieve content.
+
+POST requests are used to send data to a web server, like adding a comment or performing a login.
+
+There are several more verbs, but these aren't as commonly used for most web servers.
+
+A HTTP request can be broken down into parts. The first line is a verb and a path for the server, such as
+
+GET /index.html
+
+The next section is headers, which give the web server more information about your request. Importantly, cookies are sent in the request headers, more on those later.
+
+Finally, body of the request. For POST requests, this is the content that's sent to the server. For GET requests, a body is allowed but will mostly be ignored by the server.
+
+Here's an example for a GET request retrieving a simple JS file:
+
+GET /main.js HTTP/1.1
+Host: 192.168.170.129:8081
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
+Accept: */*
+Referer: http://192.168.170.129:8081/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+
+From the headers, you can tell what I performed the request from (Chrome version 80, from Windows 10). This is useful for forensics and analysing packet captures.
+Responses
+
+﻿The server should reply with a response. The response follows a similar structure to the request, but the first line describes the status rather than a verb and a path.
+The status will normally be a code, you're probably already familiar with 404: Not found.
+
+A basic breakdown of the status codes is:
+
+    100-199: Information
+    200-299: Successes (200 OK is the "normal" response for a GET)
+    300-399: Redirects (the information you want is elsewhere)
+    400-499: Client errors (You did something wrong, like asking for something that doesn't exist)
+    500-599: Server errors (The server tried, but something went wrong on their side)
+
+You can find more information about these here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+Response headers can be very important. They can often tell you something about the web server sending them, or give you cookies that may prove useful later on.
+
+The response will also have a body. For GET requests, this is normally web content or information such as JSON. For POST requests, it may be a status message or similar.
+
+Here's a response to the GET request shown above:
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 28
+Content-Type: application/javascript; charset=utf-8
+Last-Modified: Wed, 12 Feb 2020 12:51:44 GMT
+Date: Thu, 27 Feb 2020 21:47:30 GMT
+
+console.log("Hello, World!")
+

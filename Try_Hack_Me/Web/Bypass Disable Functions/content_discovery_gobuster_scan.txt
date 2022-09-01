@@ -1,0 +1,8 @@
+/.htaccess            (Status: 403) [Size: 278]
+/.hta                 (Status: 403) [Size: 278]
+/.htpasswd            (Status: 403) [Size: 278]
+/assets               (Status: 301) [Size: 315] [--> http://10.10.216.225/assets/]
+/index.html           (Status: 200) [Size: 12012]
+/phpinfo.php          (Status: 200) [Size: 68171]
+/server-status        (Status: 403) [Size: 278]
+/uploads              (Status: 301) [Size: 316] [--> http://10.10.216.225/uploads/]

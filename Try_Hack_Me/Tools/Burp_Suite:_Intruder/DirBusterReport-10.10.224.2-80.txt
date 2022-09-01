@@ -1,0 +1,55 @@
+DirBuster 1.0-RC1 - Report
+http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
+Report produced on Tue Oct 26 14:29:50 EDT 2021
+--------------------------------
+
+http://10.10.224.2:80
+--------------------------------
+Directories found during testing:
+
+Dirs found with a 200 response:
+
+/
+/contact/
+/about/
+/products/
+/ticket/
+/support/login/
+/admin/login/
+
+Dirs found with a 302 response:
+
+/support/
+/admin/
+
+Dirs found with a 403 response:
+
+/assets/
+/assets/imgs/
+/assets/js/
+/assets/imgs/execs/
+
+
+--------------------------------
+Files found during testing:
+
+Files found with a 200 responce:
+
+/privacy
+/about/1
+/about/2
+/about/3
+/products/1
+/about/4
+/products/2
+/assets/js/scripts.js
+/products/3
+/about/5
+/assets/js/bootstrap.bundle.min.js
+/products/4
+/about/6
+/assets/js/emailFilter.js
+/products/5
+
+
+--------------------------------

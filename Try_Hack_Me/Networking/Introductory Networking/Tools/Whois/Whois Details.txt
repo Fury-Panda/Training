@@ -1,0 +1,55 @@
+Whois essentially allows you to query who a domain name is registered to. In Europe personal details are redacted; however, elsewhere you can potentially get a great deal of information from a whois search.
+
+There is a web version of the whois (https://www.whois.com/whois/) tool if you're particularly adverse to the command line. Either way, let's get started!
+
+Whois lookups are very easy to perform. Just use (  whois <domain>  ) to get a list of available information about the domain registration:
+
+┌──(kali㉿kali)-[~]
+└─$ whois bbc.co.uk
+
+    Domain name:
+        bbc.co.uk
+
+    Data validation:
+        Nominet was able to match the registrant's name and address against a 3rd party data source on 12-Jun-2014
+
+    Registrar:
+        British Broadcasting Corporation [Tag = BBC]
+        URL: http://www.bbc.co.uk
+
+    Relevant dates:
+        Registered on: before Aug-1996
+        Expiry date:  13-Dec-2025
+        Last updated:  10-Dec-2020
+
+    Registration status:
+        Registered until expiry date.
+
+    Name servers:
+        ddns0.bbc.co.uk           148.163.199.1  2607:f740:e04e::1
+        ddns0.bbc.com
+        ddns1.bbc.co.uk           148.163.199.65  2607:f740:e04e:4::1
+        ddns1.bbc.com
+        dns0.bbc.co.uk            198.51.44.9  2620:4d:4000:6259:7:9:0:1
+        dns0.bbc.com
+        dns1.bbc.co.uk            198.51.45.9  2a00:edc0:6259:7:9::2
+        dns1.bbc.com
+
+    WHOIS lookup made at 09:26:46 07-Mar-2021
+
+-- 
+This WHOIS information is provided for free by Nominet UK the central registry
+for .uk domain names. This information and the .uk WHOIS are:
+
+    Copyright Nominet UK 1996 - 2021.
+
+You may not access the .uk WHOIS or use any data from it except as permitted
+by the terms of use available in full at https://www.nominet.uk/whoisterms,
+which includes restrictions on: (A) use of the data for advertising, or its
+repackaging, recompilation, redistribution or reuse (B) obscuring, removing
+or hiding any or all of this notice and (C) exceeding query rate or volume
+limits. The data is provided on an 'as-is' basis and may lag behind the
+register. Access may be withdrawn or restricted at any time.
+
+
+This is comparatively a very small amount of information as can often be found. Notice that we've got the domain name, the company that registered the domain, the last renewal, and when it's next due, and a bunch of information about nameservers (which we'll look at in the next task).

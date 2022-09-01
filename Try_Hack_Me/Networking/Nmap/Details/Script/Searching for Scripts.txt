@@ -1,0 +1,113 @@
+Ok, so we know how to use the scripts in Nmap, but we don't yet know how to find these scripts.
+
+We have two options for this, which should ideally be used in conjunction with each other. The first is the page on the Nmap website (mentioned in the previous task) which contains a list of all official scripts. The second is the local storage on your attacking machine. Nmap stores its scripts on Linux at ( /usr/share/nmap/scripts ). All of the NSE scripts are stored in this directory by default -- this is where Nmap looks for scripts when you specify them.
+
+There are two ways to search for installed scripts. One is by using the ( /usr/share/nmap/scripts/script.db ) file. Despite the extension, this isn't actually a database so much as a formatted text file containing filenames and categories for each available script.
+
+┌──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ file script.db 
+script.db: ASCII text
+
+The list: 
+
+┌──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ ls -l                              
+total 4904
+-rw-r--r-- 1 root root  3901 Oct 12 09:29 acarsd-info.nse
+-rw-r--r-- 1 root root  8724 Oct 12 09:29 address-info.nse
+-rw-r--r-- 1 root root  3345 Oct 12 09:29 afp-brute.nse
+-rw-r--r-- 1 root root  6463 Oct 12 09:29 afp-ls.nse
+.......... . .... ....  .... ... .. ..:.. ................
+.......... . .... ....  .... ... .. ..:.. ................
+.......... . .... ....  .... ... .. ..:.. ................
+.......... . .... ....  .... ... .. ..:.. ................
+
+
+Nmap uses this file to keep track of (and utilise) scripts for the scripting engine; however, we can also grep through it to look for scripts. For example: grep "smtp" /usr/share/nmap/scripts/script.db.
+
+┌──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ grep "smtp" /usr/share/nmap/scripts/script.db                                                                                       1 ⨯
+Entry { filename = "smtp-brute.nse", categories = { "brute", "intrusive", } }
+Entry { filename = "smtp-commands.nse", categories = { "default", "discovery", "safe", } }
+Entry { filename = "smtp-enum-users.nse", categories = { "auth", "external", "intrusive", } }
+Entry { filename = "smtp-ntlm-info.nse", categories = { "default", "discovery", "safe", } }
+Entry { filename = "smtp-open-relay.nse", categories = { "discovery", "external", "intrusive", } }
+Entry { filename = "smtp-strangeport.nse", categories = { "malware", "safe", } }
+Entry { filename = "smtp-vuln-cve2010-4344.nse", categories = { "exploit", "intrusive", "vuln", } }
+Entry { filename = "smtp-vuln-cve2011-1720.nse", categories = { "intrusive", "vuln", } }
+Entry { filename = "smtp-vuln-cve2011-1764.nse", categories = { "intrusive", "vuln", } }
+
+
+The second way to search for scripts is quite simply to use the ls command. For example, we could get the same results as in the previous screenshot by using ls -l /usr/share/nmap/scripts/*smtp*:
+
+┌──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ ls -l /usr/share/nmap/scripts/*smtp*
+-rw-r--r-- 1 root root  4309 Oct 12 09:29 /usr/share/nmap/scripts/smtp-brute.nse
+-rw-r--r-- 1 root root  4769 Oct 12 09:29 /usr/share/nmap/scripts/smtp-commands.nse
+-rw-r--r-- 1 root root 12006 Oct 12 09:29 /usr/share/nmap/scripts/smtp-enum-users.nse
+-rw-r--r-- 1 root root  5873 Oct 12 09:29 /usr/share/nmap/scripts/smtp-ntlm-info.nse
+-rw-r--r-- 1 root root 10148 Oct 12 09:29 /usr/share/nmap/scripts/smtp-open-relay.nse
+-rw-r--r-- 1 root root   716 Oct 12 09:29 /usr/share/nmap/scripts/smtp-strangeport.nse
+-rw-r--r-- 1 root root 14781 Oct 12 09:29 /usr/share/nmap/scripts/smtp-vuln-cve2010-4344.nse
+-rw-r--r-- 1 root root  7719 Oct 12 09:29 /usr/share/nmap/scripts/smtp-vuln-cve2011-1720.nse
+-rw-r--r-- 1 root root  7603 Oct 12 09:29 /usr/share/nmap/scripts/smtp-vuln-cve2011-1764.nse
+
+
+Note the use of asterisks (*) on either side of the search term
+
+The same techniques can also be used to search for categories of script. For example:
+grep "auth" /usr/share/nmap/scripts/script.db
+
+┌──(kali㉿kali)-[/usr/share/nmap/scripts]
+└─$ grep "auth" /usr/share/nmap/scripts/script.db                                                                                       1 ⨯
+Entry { filename = "ajp-auth.nse", categories = { "auth", "default", "safe", } }
+Entry { filename = "auth-owners.nse", categories = { "default", "safe", } }
+Entry { filename = "auth-spoof.nse", categories = { "malware", "safe", } }
+Entry { filename = "creds-summary.nse", categories = { "auth", "default", "safe", } }
+Entry { filename = "dicom-brute.nse", categories = { "auth", "brute", } }
+Entry { filename = "dicom-ping.nse", categories = { "auth", "default", "discovery", "safe", } }
+Entry { filename = "domcon-cmd.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "domino-enum-users.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "ftp-anon.nse", categories = { "auth", "default", "safe", } }
+Entry { filename = "http-auth-finder.nse", categories = { "discovery", "safe", } }
+Entry { filename = "http-auth.nse", categories = { "auth", "default", "safe", } }
+Entry { filename = "http-barracuda-dir-traversal.nse", categories = { "auth", "exploit", "intrusive", } }
+Entry { filename = "http-config-backup.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "http-default-accounts.nse", categories = { "auth", "discovery", "intrusive", } }
+Entry { filename = "http-domino-enum-passwords.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "http-method-tamper.nse", categories = { "auth", "vuln", } }
+Entry { filename = "http-userdir-enum.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "http-vuln-cve2010-0738.nse", categories = { "auth", "safe", "vuln", } }
+Entry { filename = "http-vuln-cve2017-5689.nse", categories = { "auth", "exploit", "vuln", } }
+Entry { filename = "http-wordpress-users.nse", categories = { "auth", "intrusive", "vuln", } }
+Entry { filename = "informix-query.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "informix-tables.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "krb5-enum-users.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "ms-sql-dump-hashes.nse", categories = { "auth", "discovery", "safe", } }
+Entry { filename = "ms-sql-empty-password.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "ms-sql-hasdbaccess.nse", categories = { "auth", "discovery", "safe", } }
+Entry { filename = "mysql-dump-hashes.nse", categories = { "auth", "discovery", "safe", } }
+Entry { filename = "mysql-empty-password.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "mysql-query.nse", categories = { "auth", "discovery", "safe", } }
+Entry { filename = "mysql-users.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "ncp-enum-users.nse", categories = { "auth", "safe", } }
+Entry { filename = "netbus-auth-bypass.nse", categories = { "auth", "safe", "vuln", } }
+Entry { filename = "oracle-enum-users.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "realvnc-auth-bypass.nse", categories = { "auth", "safe", "vuln", } }
+Entry { filename = "sip-enum-users.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "smb-enum-users.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "smtp-enum-users.nse", categories = { "auth", "external", "intrusive", } }
+Entry { filename = "snmp-win32-users.nse", categories = { "auth", "default", "safe", } }
+Entry { filename = "socks-auth-info.nse", categories = { "default", "discovery", "safe", } }
+Entry { filename = "ssh-auth-methods.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "ssh-publickey-acceptance.nse", categories = { "auth", "intrusive", } }
+Entry { filename = "vmauthd-brute.nse", categories = { "brute", "intrusive", } }
+Entry { filename = "x11-access.nse", categories = { "auth", "default", "safe", } }
+
+
+
+Installing New Scripts
+
+We mentioned previously that the Nmap website contains a list of scripts, so, what happens if one of these is missing in the scripts directory locally? A standard sudo apt update && sudo apt install nmap should fix this; however, it's also possible to install the scripts manually by downloading the script from Nmap (sudo wget -O /usr/share/nmap/scripts/<script-name>.nse https://svn.nmap.org/nmap/scripts/<script-name>.nse). This must then be followed up with nmap --script-updatedb, which updates the script.db file to contain the newly downloaded script.
+
+It's worth noting that you would require the same "updatedb" command if you were to make your own NSE script and add it into Nmap -- a more than manageable task with some basic knowledge of Lua! 

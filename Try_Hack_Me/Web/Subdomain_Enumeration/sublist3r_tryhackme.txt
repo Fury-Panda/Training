@@ -1,0 +1,9 @@
+www.tryhackme.com
+assets.tryhackme.com
+blog.tryhackme.com
+docs.tryhackme.com
+monitoring.tryhackme.com
+remote.tryhackme.com
+remote-eu-1.tryhackme.com
+remote-us-west-1.tryhackme.com
+store.tryhackme.com
