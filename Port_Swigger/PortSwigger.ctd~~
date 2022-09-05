@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="PortSwigger" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1662139290" ts_lastsave="1662141454">
+    <node name="SQL Injection" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1662139329" ts_lastsave="1662153413">
+      <rich_text weight="heavy">Lab 1: sqli in WHERE clause allowing retrieval of hidden data</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Details:</rich_text>
+      <rich_text>  This lab contains an SQL injection vulnerability in the product category filter. When the user selects a category, the application carries out an SQL query like the following:
+	</rich_text>
+      <rich_text family="monospace">SELECT * FROM products WHERE category = 'Gifts' AND released = 1 </rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">To-Do:</rich_text>
+      <rich_text> To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased. 
+</rich_text>
+      <rich_text weight="heavy">Solution:</rich_text>
+      <rich_text>	
+		1. Modify the category parameter, giving it the value </rich_text>
+      <rich_text family="monospace">'+OR+1=1--</rich_text>
+      <rich_text> [in the url or in burp suite]
+		2. Submit the request, and verify that the response now contains additional items. 
+</rich_text>
+      <rich_text weight="heavy">Query:</rich_text>
+      <rich_text> </rich_text>
+      <rich_text family="monospace">SELECT * FROM products WHERE category = 'Gifts'+OR+1=1--' AND released = 1 </rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Explanation:</rich_text>
+      <rich_text> Here in query 1=1 gives true for all and "--" comment out rest of the portion [' AND released = 1]
+
+
+</rich_text>
+      <rich_text weight="heavy">Lab 2: sqli bypass login</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Details:</rich_text>
+      <rich_text> This lab contains an SQL injection vulnerability in the login function.
+</rich_text>
+      <rich_text weight="heavy">To Do:</rich_text>
+      <rich_text> To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user. 
+</rich_text>
+      <rich_text weight="heavy">Solution: </rich_text>
+      <rich_text>
+	</rich_text>
+      <rich_text style="italic">username:</rich_text>
+      <rich_text> </rich_text>
+      <rich_text family="monospace">administrator'--</rich_text>
+      <rich_text>
+	</rich_text>
+      <rich_text style="italic">password:</rich_text>
+      <rich_text> </rich_text>
+      <rich_text family="monospace">1 </rich_text>
+      <rich_text>(anything you want.)
+</rich_text>
+      <rich_text weight="heavy">Query:</rich_text>
+      <rich_text> </rich_text>
+      <rich_text family="monospace">SELECT * FROM users WHERE username = 'administrator'--' AND password = ''</rich_text>
+      <rich_text>   [' AND password = ''] this part is comment out.
+</rich_text>
+      <rich_text weight="heavy">Explanation:</rich_text>
+      <rich_text> In username field"--" will comment out remaining part of the sql query.
+
+
+</rich_text>
+      <rich_text weight="heavy">Lab 3: SQL injection UNION attack, determining the number of columns returned by the query</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Details:</rich_text>
+      <rich_text> This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. The first step of such an attack is to determine the number of columns that are being returned by the query. You will then use this technique in subsequent labs to construct the full attack. 
+</rich_text>
+      <rich_text weight="heavy">To Do: </rich_text>
+      <rich_text>This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. The first step of such an attack is to determine the number of columns that are being returned by the query. You will then use this technique in subsequent labs to construct the full attack. 
+</rich_text>
+      <rich_text weight="heavy">Sloution: </rich_text>
+      <rich_text>
+	1. Use Burp Suite to intercept the request.
+	2. Send the request to the repeter (ctrl+r) [it's easy to modify the request and view the result in the repeter]. You can do that in default "intercept" tab under "Proxy". It's totally optional. 
+	3. Modify the 'category' parameter to "</rich_text>
+      <rich_text family="monospace"> ' UNION SELECT NULL--</rich_text>
+      <rich_text>".
+	4. Add "</rich_text>
+      <rich_text family="monospace">NULL</rich_text>
+      <rich_text>" to the query untill an valid 200 status request. 
+		i.e. 
+		" </rich_text>
+      <rich_text family="monospace">' UNION SELECT NULL, NULL--</rich_text>
+      <rich_text>"
+		" </rich_text>
+      <rich_text family="monospace">' UNION SELECT NULL, NULL, NULL--</rich_text>
+      <rich_text>"
+	5. When you will get a 200 status the number of "</rich_text>
+      <rich_text family="monospace">NULL</rich_text>
+      <rich_text>" is the number of columns returned by the orginal query.</rich_text>
+    </node>
+  </node>
+</cherrytree>
